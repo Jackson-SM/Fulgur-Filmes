@@ -1,3 +1,3 @@
-import styled from 'styled-components';
+import { styled } from '../../config/stitches.config';
 
-export const StyledInput = styled.input``;
+export const StyledInput = styled('input', {});

@@ -6,6 +6,6 @@ type FormProps = React.ComponentProps<typeof StyledForm> & {
   children: React.ReactNode;
 };
 
-export function Form({ children }: FormProps) {
-  return <StyledForm>{children}</StyledForm>;
+export function Form({ children, ...props }: FormProps) {
+  return <StyledForm {...props}>{children}</StyledForm>;
 }
