@@ -22,7 +22,15 @@ type isErrorProps = {
 
 export function AuthProvider({ children }: AuthProviderProps) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isLogged, setIsLogged] = useState<boolean>(false);
+  const [isLogged, setIsLogged] = useState<boolean>(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      Api.defaults.headers.Authorization = `Bearer ${token}`;
+      return true;
+    }
+
+    return false;
+  });
   const [isError, setIsError] = useState<isErrorProps | boolean>(false);
 
   const login = async (email: string, password: string) => {
@@ -55,14 +63,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
       setIsLogged(false);
     }
   };
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      Api.defaults.headers.Authorization = `Bearer ${token}`;
-      setIsLogged(true);
-    }
-  }, []);
 
   return <AuthContext.Provider value={{ isLoading, isLogged, login, logout }}>{children}</AuthContext.Provider>;
 }
