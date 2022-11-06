@@ -17,7 +17,7 @@ export function FormLogin() {
     },
   });
 
-  const { login } = useAuth();
+  const { login, isLoading } = useAuth();
 
   return (
     <FormContainer>
@@ -43,7 +43,7 @@ export function FormLogin() {
           />
           <LinkInput href="/forgot_password">forgot my password</LinkInput>
         </InputField>
-        <Button type="submit" css={{ width: '100%' }}>
+        <Button disabled={isLoading} type="submit" css={{ width: '100%' }}>
           Continue
           <ArrowRightIcon />
         </Button>

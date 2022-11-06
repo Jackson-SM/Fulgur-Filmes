@@ -26,32 +26,43 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [isError, setIsError] = useState<isErrorProps | boolean>(false);
 
   const login = async (email: string, password: string) => {
+    setIsLoading(true);
     try {
-      setIsLoading(true);
       const { data } = await Api.post('/auth/login', {
         email,
         password,
       });
-      Api.defaults.headers.authorization = data.token;
+      localStorage.setItem('token', data.token);
+      Api.defaults.headers.Authorization = `Bearer ${data.token}`;
       setIsLogged(true);
     } catch (err: any) {
       setIsError({
         status: err.response.status,
         message: 'Credencias inválidas',
       });
-    } finally {
-      setIsLoading(false);
     }
+
+    setIsLoading(false);
   };
 
   const logout = async () => {
-    Api.defaults.headers.authorization = null;
-    setIsLogged(true);
+    const token = localStorage.getItem('token');
+    Api.defaults.headers.Authorization = `Bearer ${token}`;
+    const { data } = await Api.post('auth/logout');
+    if (data.revoke) {
+      Api.defaults.headers.Authorization = null;
+      localStorage.removeItem('token');
+      setIsLogged(false);
+    }
   };
 
   useEffect(() => {
-    Api.defaults.headers.authorization ? setIsLogged(true) : setIsLogged(false);
-  }, [isError]);
+    const token = localStorage.getItem('token');
+    if (token) {
+      Api.defaults.headers.Authorization = `Bearer ${token}`;
+      setIsLogged(true);
+    }
+  }, []);
 
   return <AuthContext.Provider value={{ isLoading, isLogged, login, logout }}>{children}</AuthContext.Provider>;
 }
