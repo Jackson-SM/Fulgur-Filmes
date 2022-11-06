@@ -1,7 +1,7 @@
 import { createStitches } from '@stitches/react';
 
+import { useTheme } from '../hooks/useTheme';
 import { dark } from '../styled/themes/dark';
-import { light } from '../styled/themes/light';
 
 export const handleTheme = dark.colors;
 
