@@ -1,14 +1,14 @@
 import { createStitches } from '@stitches/react';
 
-export const { styled, css, globalCss } = createStitches({
+import { dark } from '../styled/themes/dark';
+import { light } from '../styled/themes/light';
+
+export const handleTheme = dark.colors;
+
+export const { styled, css, globalCss, theme } = createStitches({
   theme: {
     colors: {
-      primary: '#715aff',
-      secundary: '#ff4c52',
-      tertiary: '#38e4ae',
-
-      background: '#131313',
-      text: '#fdfffc',
+      ...handleTheme,
     },
   },
   utils: {

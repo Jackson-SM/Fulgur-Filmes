@@ -17,7 +17,9 @@ export function FormLogin() {
     <Form onSubmit={handleSubmit((data) => console.log(data))}>
       <Controller control={control} name="email" render={({ field }) => <Input {...field} ref={null} />} />
       <Controller control={control} name="password" render={({ field }) => <Input {...field} ref={null} />} />
-      <Button type="submit">Enviar</Button>
+      <Button type="submit" as="a" href="/register" css={{ width: '90%' }}>
+        Enviar
+      </Button>
     </Form>
   );
 }
