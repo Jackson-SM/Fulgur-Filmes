@@ -6,6 +6,7 @@ import { handleTheme, styled } from '../../config/stitches.config';
 export const Button = styled('button', {
   textDecoration: 'none',
   color: '$text',
+  border: 'none',
 
   display: 'flex',
   alignItems: 'center',
@@ -13,12 +14,26 @@ export const Button = styled('button', {
 
   borderRadius: '3px',
 
-  defaultVariants: {
-    color: 'tertiary',
-    size: 'small',
-  },
+  outline: 'none',
+
+  fontFamily: 'Questrial',
+
+  fontSize: '15px',
+  cursor: 'pointer',
 
   transition: 'all ease 130ms',
+
+  '& svg': {
+    width: '17px',
+    height: '17px',
+
+    marginLeft: '20px',
+  },
+
+  defaultVariants: {
+    color: 'primary',
+    size: 'small',
+  },
 
   variants: {
     color: {

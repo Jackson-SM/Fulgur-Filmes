@@ -9,14 +9,25 @@ export const StyledCardForm = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
+  justifyContent: 'space-between',
 
   padding: '10px',
 
   minWidth: '300px',
 
-  flex: '1.5',
+  flex: '1.4',
 
   height: '100%',
+
+  '& .illustration': {
+    width: '300px',
+    height: '300px',
+
+    '& img': {
+      width: '300px',
+      height: '300px',
+    },
+  },
 
   '& .header': {
     display: 'flex',
@@ -29,8 +40,10 @@ export const StyledCardForm = styled('div', {
     padding: '10px',
   },
 
-  '& img': {
-    width: '100%',
-    height: '100%',
+  '& .footer': {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '5px',
+    alignItems: 'center',
   },
 });

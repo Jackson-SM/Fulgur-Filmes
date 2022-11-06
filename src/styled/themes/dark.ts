@@ -6,6 +6,6 @@ export const dark = {
     tertiary: '#7CC5F3',
 
     background: '#131313',
-    text: '#fdfffc',
+    text: '#f3f3f3',
   },
 };

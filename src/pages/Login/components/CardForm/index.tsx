@@ -1,6 +1,7 @@
 import React from 'react';
 
 import illustration from '../../../../assets/illustration.svg';
+import { LinkInput } from '../FormLogin/styles';
 import { StyledCardForm } from './styles';
 
 type CardFormProps = {
@@ -15,7 +16,13 @@ export function CardForm({ title, description }: CardFormProps) {
         <h1>{title}</h1>
         <span>{description}</span>
       </div>
-      <img src={illustration} alt="" />
+      <div className="illustration">
+        <img src={illustration} alt="" />
+      </div>
+      <div className="footer">
+        <span>don't have an account?</span>
+        <LinkInput href="/register">Register</LinkInput>
+      </div>
     </StyledCardForm>
   );
 }
