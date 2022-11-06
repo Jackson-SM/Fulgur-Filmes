@@ -3,15 +3,15 @@ import React from 'react';
 import { Form } from '../../components/Form';
 import { CardForm } from './components/CardForm';
 import { FormLogin } from './components/FormLogin';
-import { FormContainer, LoginContainer } from './styles';
+import { Container, LoginContainer } from './styles';
 
 export function Login() {
   return (
     <LoginContainer>
-      <FormContainer>
-        <CardForm />
+      <Container>
+        <CardForm title="Log-In" description="Entre para ver nosso catálogo de filmes e experienciar nosso serviço." />
         <FormLogin />
-      </FormContainer>
+      </Container>
     </LoginContainer>
   );
 }

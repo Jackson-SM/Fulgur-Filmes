@@ -1,11 +1,21 @@
 import React from 'react';
 
+import illustration from '../../../../assets/illustration.svg';
 import { StyledCardForm } from './styles';
 
-export function CardForm() {
+type CardFormProps = {
+  title?: string;
+  description?: string;
+};
+
+export function CardForm({ title, description }: CardFormProps) {
   return (
     <StyledCardForm>
-      <h1>Card Form</h1>
+      <div className="header">
+        <h1>{title}</h1>
+        <span>{description}</span>
+      </div>
+      <img src={illustration} alt="" />
     </StyledCardForm>
   );
 }
