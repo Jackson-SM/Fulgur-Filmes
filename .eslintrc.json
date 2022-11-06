@@ -26,6 +26,8 @@
     "prettier"
   ],
   "rules": {
+    "react/jsx-no-constructed-context-values": "off",
+    "@typescript-eslint/naming-convention": "off",
     "react/no-unescaped-entities": "off",
     "no-unused-expressions": "off",
     "react/require-default-props": "off",

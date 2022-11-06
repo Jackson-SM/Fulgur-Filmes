@@ -15,4 +15,10 @@ export const Container = styled('div', {
   height: '500px',
 
   display: 'flex',
+
+  borderRadius: '10px',
+
+  overflow: 'hidden',
+
+  boxShadow: `0 0 10px 5px ${whiteA.whiteA2}`,
 });
