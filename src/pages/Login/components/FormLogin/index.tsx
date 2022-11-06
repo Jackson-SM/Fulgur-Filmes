@@ -6,6 +6,7 @@ import logo from '../../../../assets/logo.png';
 import { Button } from '../../../../components/Button';
 import { Form } from '../../../../components/Form';
 import { Input } from '../../../../components/Input';
+import { useAuth } from '../../../../hooks/useAuth';
 import { FormContainer, InputField, Label, LinkInput } from './styles';
 
 export function FormLogin() {
@@ -16,13 +17,15 @@ export function FormLogin() {
     },
   });
 
+  const { login } = useAuth();
+
   return (
     <FormContainer>
       <div className="top_form">
         <img src={logo} alt="" />
         <span>Fulgur Log-in</span>
       </div>
-      <Form onSubmit={handleSubmit((data) => console.log(data))}>
+      <Form onSubmit={handleSubmit((data) => login(data.email, data.password))}>
         <InputField>
           <Label htmlFor="email">Email</Label>
           <Controller
