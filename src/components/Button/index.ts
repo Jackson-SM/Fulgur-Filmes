@@ -35,6 +35,13 @@ export const Button = styled('button', {
     size: 'small',
   },
 
+  '&[disabled]': {
+    background: `${whiteA.whiteA6}`,
+    '&:hover': {
+      background: `${whiteA.whiteA6}`,
+    },
+  },
+
   variants: {
     color: {
       default: {

@@ -23,7 +23,7 @@ export const StyledInput = styled('input', {
   },
 
   variants: {
-    type: {
+    styled: {
       circle: {
         borderRadius: '60px',
       },
