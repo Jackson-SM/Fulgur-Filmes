@@ -2,10 +2,12 @@ import React, { useEffect } from 'react';
 
 import { Api } from '../../api/api';
 import { Button } from '../../components/Button';
+import { Navbar } from '../../components/Navbar';
 import { useAuth } from '../../hooks/useAuth';
 import { useTheme } from '../../hooks/useTheme';
 import { darkTheme } from '../../styled/stitches-theme/darkTheme';
 import { lightTheme } from '../../styled/stitches-theme/lightTheme';
+import { HomeContainer } from './styles';
 
 export function Home() {
   const { logout } = useAuth();
@@ -17,10 +19,10 @@ export function Home() {
   const { theme, changeTheme } = useTheme();
 
   return (
-    <div>
-      <h1>Home</h1>
+    <HomeContainer>
+      <Navbar spacing="around" />
       <Button onClick={(e) => logout()}>Logout</Button>
       <Button onClick={changeTheme}>Change Theme</Button>
-    </div>
+    </HomeContainer>
   );
 }

@@ -1,5 +1,15 @@
 import React from 'react';
 
-export function Navbar() {
-  return <div>Navbar</div>;
+import { Logo } from '../Logo';
+import { StyledNavbar } from './styles';
+
+type NavbarProps = React.ComponentProps<typeof StyledNavbar>;
+
+export function Navbar({ children, ...props }: NavbarProps) {
+  return (
+    <StyledNavbar {...props}>
+      <Logo />
+      {children}
+    </StyledNavbar>
+  );
 }
