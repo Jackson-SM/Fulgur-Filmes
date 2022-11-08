@@ -5,9 +5,10 @@ import { useForm, Controller } from 'react-hook-form';
 import logo from '../../../../assets/logo.png';
 import { Button } from '../../../../components/Button';
 import { Form } from '../../../../components/Form';
+import { LinkInput } from '../../../../components/Form/components/LinkInput';
 import { Input } from '../../../../components/Input';
 import { useAuth } from '../../../../hooks/useAuth';
-import { FormContainer, InputField, Label, LinkInput } from './styles';
+import { FormContainer, InputField, Label } from './styles';
 
 export function FormLogin() {
   const { control, handleSubmit } = useForm({
@@ -42,15 +43,9 @@ export function FormLogin() {
           />
           <LinkInput href="/forgot_password">Forgot my password</LinkInput>
         </InputField>
-        <Button disabled={isLoading} type="submit" css={{ width: '100%' }}>
-          {isLoading ? (
-            'Loading...'
-          ) : (
-            <>
-              Continue
-              <ArrowRightIcon />
-            </>
-          )}
+        <Button loading={isLoading} type="submit" css={{ width: '100%' }}>
+          Continue
+          <ArrowRightIcon />
         </Button>
       </Form>
     </FormContainer>

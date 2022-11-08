@@ -1,8 +1,6 @@
-import wave from '../../../../assets/wave.svg';
 import { styled } from '../../../../config/stitches.config';
 
 export const StyledCardForm = styled('div', {
-  backgroundImage: `url(${wave})`,
   backgroundRepeat: 'no-repeat',
   backgroundSize: 'cover',
 

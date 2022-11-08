@@ -1,3 +1,4 @@
+import { CircularProgress } from '@mui/material';
 import { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
@@ -12,42 +13,21 @@ type RouteProps = {
   children: JSX.Element;
 };
 
-export interface IUser {
-  id: number;
-  email: string;
-  name: string;
-  password: string;
-  created_at: Date;
-  updated_at: Date;
-}
-
-export interface IUserAxiosResponse {
-  user: IUser;
-}
-
 export function PublicRoute({ children }: RouteProps) {
   const { isLogged, isLoading } = useAuth();
 
   return isLogged ? <Navigate to="/" /> : children;
 }
 export function PrivateRoute({ children }: RouteProps) {
-  const { isLogged, isLoading, logout } = useAuth();
+  const { isLogged, isLoading, userVerifyAndReturned } = useAuth();
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-
-    (async () => {
-      try {
-        const { data } = await Api.post<IUserAxiosResponse>('auth/verify');
-
-        const { user } = data;
-
-        console.log(user);
-      } catch (err) {
-        logout();
-      }
-    })();
+    userVerifyAndReturned();
   }, []);
+
+  if (isLoading) {
+    return <CircularProgress />;
+  }
 
   return isLogged ? children : <Navigate to="/login" />;
 }

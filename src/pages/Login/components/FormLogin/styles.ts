@@ -42,20 +42,3 @@ export const InputField = styled('div', {
 });
 
 export const Label = styled('label', {});
-
-export const LinkInput = styled('a', {
-  textDecoration: 'none',
-  color: '$text',
-
-  fontSize: '14px',
-  padding: '5px',
-  width: 'max-content',
-
-  borderRadius: '20px',
-
-  transition: 'all ease 100ms',
-
-  '&:hover': {
-    background: `${whiteA.whiteA4}`,
-  },
-});

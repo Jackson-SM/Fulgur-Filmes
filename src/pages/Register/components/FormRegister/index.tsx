@@ -19,13 +19,13 @@ export function FormRegister() {
     },
   });
 
-  const { login, isLoading } = useAuth();
+  const { register, isLoading } = useAuth();
   return (
     <FormContainer>
       <div className="top_form">
         <img src={logo} alt="" />
       </div>
-      <Form onSubmit={handleSubmit((data) => login(data.email, data.password))}>
+      <Form onSubmit={handleSubmit((data) => register(data.email, data.name, data.password))}>
         <InputField>
           <Label htmlFor="email">Email</Label>
           <Controller control={control} name="email" render={({ field }) => <Input {...field} ref={null} />} />
@@ -42,15 +42,9 @@ export function FormRegister() {
           <Label htmlFor="password">Confirm Password</Label>
           <Input type="password" />
         </InputField>
-        <Button disabled={isLoading} type="submit" css={{ width: '100%' }}>
-          {isLoading ? (
-            'Loading...'
-          ) : (
-            <>
-              Continue
-              <ArrowRightIcon />
-            </>
-          )}
+        <Button loading={isLoading} type="submit" css={{ width: '100%' }}>
+          Continue
+          <ArrowRightIcon />
         </Button>
       </Form>
     </FormContainer>

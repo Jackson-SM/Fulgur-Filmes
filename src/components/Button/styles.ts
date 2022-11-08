@@ -1,9 +1,10 @@
+import { CircularProgress } from '@mui/material';
 import { whiteA } from '@radix-ui/colors';
 import { lighten } from 'polished';
 
 import { handleTheme, styled } from '../../config/stitches.config';
 
-export const Button = styled('button', {
+export const StyledButton = styled('button', {
   textDecoration: 'none',
   color: '$text',
   border: 'none',
@@ -22,6 +23,8 @@ export const Button = styled('button', {
   cursor: 'pointer',
 
   transition: 'all ease 130ms',
+
+  position: 'relative',
 
   '& svg': {
     width: '17px',
@@ -75,14 +78,30 @@ export const Button = styled('button', {
     },
     size: {
       small: {
-        padding: '10px',
+        width: '100px',
+        height: '40px',
       },
       medium: {
-        padding: '20px',
+        width: '200px',
+        height: '90px',
       },
       large: {
-        padding: '40px',
+        width: '400px',
+        height: '190px',
       },
     },
+  },
+});
+
+export const CircularProgressButton = styled(CircularProgress, {
+  padding: '0',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: '100%',
+  '& svg': {
+    positon: 'absolute',
+    margin: 0,
+    padding: 0,
   },
 });
