@@ -4,6 +4,8 @@ export const GlobalCss = globalCss({
   '@import': [
     'https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap',
     'https://fonts.googleapis.com/css2?family=Questrial&display=swap',
+    'https://fonts.googleapis.com/css2?family=Montserrat&display=swap',
+    'https://fonts.googleapis.com/css2?family=Comfortaa&display=swap',
   ],
 
   '*': {

@@ -43,7 +43,7 @@ export function FormLogin() {
           />
           <LinkInput href="/forgot_password">Forgot my password</LinkInput>
         </InputField>
-        <Button loading={isLoading} type="submit" css={{ width: '100%' }}>
+        <Button loading={isLoading} type="submit" css={{ width: '100%' }} color="primary">
           Continue
           <ArrowRightIcon />
         </Button>

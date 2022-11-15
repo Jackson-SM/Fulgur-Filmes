@@ -28,6 +28,11 @@ export const LogoContainer = styled('div', {
 });
 export const TextLogo = styled('h1', {
   fontSize: '25px',
+  fontFamily: 'Comfortaa',
+
+  '& strong': {
+    color: '$primary',
+  },
 });
 export const ImgLogo = styled('img', {
   variants: {

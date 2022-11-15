@@ -26,6 +26,8 @@ export const StyledButton = styled('button', {
 
   position: 'relative',
 
+  background: 'none',
+
   '& svg': {
     width: '17px',
     height: '17px',
@@ -34,8 +36,7 @@ export const StyledButton = styled('button', {
   },
 
   defaultVariants: {
-    color: 'primary',
-    size: 'small',
+    size: 'medium',
   },
 
   '&[disabled]': {
@@ -46,6 +47,41 @@ export const StyledButton = styled('button', {
   },
 
   variants: {
+    outlined: {
+      default: {
+        border: '1px solid',
+        borderColor: '$text',
+        color: '$background',
+
+        '&:hover': {
+          background: '$text',
+        },
+      },
+      primary: {
+        border: '1px solid',
+        borderColor: '$primary',
+
+        '&:hover': {
+          background: '$primary',
+        },
+      },
+      secondary: {
+        border: '1px solid',
+        borderColor: '$secundary',
+
+        '&:hover': {
+          background: '$secundary',
+        },
+      },
+      tertiary: {
+        border: '1px solid',
+        borderColor: '$tertiary',
+
+        '&:hover': {
+          background: '$tertiary',
+        },
+      },
+    },
     color: {
       default: {
         background: `${whiteA.whiteA6}`,
@@ -78,12 +114,12 @@ export const StyledButton = styled('button', {
     },
     size: {
       small: {
-        width: '100px',
-        height: '40px',
+        width: '80px',
+        height: '30px',
       },
       medium: {
-        width: '200px',
-        height: '90px',
+        width: '100px',
+        height: '40px',
       },
       large: {
         width: '400px',

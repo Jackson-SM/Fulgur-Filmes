@@ -42,7 +42,7 @@ export function FormRegister() {
           <Label htmlFor="password">Confirm Password</Label>
           <Input type="password" />
         </InputField>
-        <Button loading={isLoading} type="submit" css={{ width: '100%' }}>
+        <Button loading={isLoading} type="submit" css={{ width: '100%' }} color="primary">
           Continue
           <ArrowRightIcon />
         </Button>

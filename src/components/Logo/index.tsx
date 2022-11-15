@@ -7,7 +7,9 @@ export function Logo() {
   return (
     <LogoContainer>
       <ImgLogo src={logo} sizes="md" />
-      <TextLogo>Fulgur</TextLogo>
+      <TextLogo>
+        Fulgur<strong>Flix</strong>
+      </TextLogo>
     </LogoContainer>
   );
 }
