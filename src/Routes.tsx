@@ -3,8 +3,10 @@ import { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 import { Api } from './api/api';
+import { ScreenLoading } from './components/ScreenLoading';
 import { useAuth } from './hooks/useAuth';
 import { Home } from './pages/Home';
+import { Index } from './pages/Index';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 import { GlobalCss } from './styled/GlobalCss';
@@ -18,6 +20,7 @@ export function PublicRoute({ children }: RouteProps) {
 
   return isLogged ? <Navigate to="/" /> : children;
 }
+
 export function PrivateRoute({ children }: RouteProps) {
   const { isLogged, isLoading, userVerifyAndReturned } = useAuth();
 
@@ -26,10 +29,19 @@ export function PrivateRoute({ children }: RouteProps) {
   }, []);
 
   if (isLoading) {
-    return <CircularProgress />;
+    return <ScreenLoading />;
   }
 
   return isLogged ? children : <Navigate to="/login" />;
+}
+
+export function HomeRenderingCondition() {
+  const { isLogged, isLoading, userVerifyAndReturned } = useAuth();
+  if (isLogged) {
+    return <Home />;
+  }
+
+  return <Index />;
 }
 
 function App() {
@@ -37,14 +49,7 @@ function App() {
 
   return (
     <Routes>
-      <Route
-        path="/"
-        element={
-          <PrivateRoute>
-            <Home />
-          </PrivateRoute>
-        }
-      />
+      <Route path="/" element={<HomeRenderingCondition />} />
       <Route
         path="/login"
         element={
