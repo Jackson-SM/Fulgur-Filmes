@@ -4,7 +4,7 @@ import { dark } from '../styled/themes/dark';
 
 export const handleTheme = dark.colors;
 
-export const { styled, css, globalCss, theme, createTheme } = createStitches({
+export const { styled, css, globalCss, theme, createTheme, keyframes } = createStitches({
   theme: {
     colors: {
       primary: 'hsl(248, 100%, 68%)',

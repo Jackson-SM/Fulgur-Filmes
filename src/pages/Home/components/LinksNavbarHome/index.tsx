@@ -5,9 +5,9 @@ import { ContainerLinks, LinkNavbar } from './styles';
 export function LinksNavbarHome() {
   return (
     <ContainerLinks>
-      <LinkNavbar to="#filmes">Home</LinkNavbar>
-      <LinkNavbar to="#filmes">Catalog</LinkNavbar>
-      <LinkNavbar to="#filmes">Pricing Plans</LinkNavbar>
+      <LinkNavbar to="#movies">Movies</LinkNavbar>
+      <LinkNavbar to="#series">Series</LinkNavbar>
+      <LinkNavbar to="#catalog">Catalog</LinkNavbar>
     </ContainerLinks>
   );
 }

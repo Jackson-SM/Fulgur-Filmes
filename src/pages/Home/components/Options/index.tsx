@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Avatar } from '../../../../components/Avatar';
 import { Button } from '../../../../components/Button';
 import { useAuth } from '../../../../hooks/useAuth';
 import { useTheme } from '../../../../hooks/useTheme';
@@ -13,9 +14,7 @@ export function Options() {
   return (
     <ContainerOptions>
       <StyledSwitch color="secondary" checked={theme === 'dark'} onClick={changeTheme} />
-      <Button outlined="primary" size="small" onClick={logout}>
-        Sair
-      </Button>
+      <Avatar dropdown />
     </ContainerOptions>
   );
 }
