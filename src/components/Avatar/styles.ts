@@ -59,9 +59,17 @@ export const DropdownPortal = styled(DropdownMenu.Portal, {});
 
 export const DropdownContent = styled(DropdownMenu.Content, {
   minWidth: '220px',
+  padding: 5,
+  paddingTop: 15,
+  paddingBottom: 15,
+
+  display: 'flex',
+  flexDirection: 'column',
 
   background: '$backgroundLight',
   color: '$text',
+
+  borderRadius: 3,
 
   '&[data-state="open"]': {
     animationDuration: '200ms',
@@ -73,14 +81,44 @@ export const DropdownContent = styled(DropdownMenu.Content, {
   },
 });
 
-export const DropdownGroup = styled(DropdownMenu.Group, {});
-
-export const DropdownLabel = styled(DropdownMenu.Label, {
-  paddingLeft: '20px',
-  color: '$textDark',
-  fontSize: '12px',
+export const DropdownGroup = styled(DropdownMenu.Group, {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 6,
 });
 
-export const DropdownItem = styled(DropdownMenu.Item, {});
+export const DropdownLabel = styled(DropdownMenu.Label, {
+  color: '$textDark',
+  fontSize: '12px',
+  padding: 4,
+  paddingLeft: 30,
+});
+
+export const DropdownItem = styled(DropdownMenu.Item, {
+  padding: 3,
+  paddingLeft: 15,
+  outline: 'none',
+  fontSize: 14,
+  color: '$primaryLight',
+  cursor: 'default',
+
+  transition: 'all ease 130ms',
+
+  borderRadius: 3,
+
+  display: 'flex',
+  justifyContent: 'space-between',
+
+  '&:hover': {
+    background: '$primary',
+    color: 'white',
+  },
+});
 
 export const DropdownArrow = styled(DropdownMenu.Arrow, { fill: '$backgroundLight' });
+
+export const DropdownMenuSeparator = styled(DropdownMenu.Separator, {
+  height: 1,
+  backgroundColor: '$primary',
+  margin: 10,
+});

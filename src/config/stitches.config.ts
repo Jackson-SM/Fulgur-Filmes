@@ -20,7 +20,7 @@ export const { styled, css, globalCss, theme, createTheme, keyframes } = createS
       backgroundLight: 'hsl(0, 0%, 20%)',
 
       text: 'hsl(0, 0%, 95%)',
-      textDark: 'hsl(0, 0%, 60%)',
+      textDark: 'hsl(0, 0%, 85%)',
     },
   },
   utils: {
