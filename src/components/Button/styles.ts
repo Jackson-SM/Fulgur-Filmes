@@ -13,8 +13,6 @@ export const StyledButton = styled('button', {
   alignItems: 'center',
   justifyContent: 'center',
 
-  borderRadius: '3px',
-
   outline: 'none',
 
   fontFamily: 'Questrial',
@@ -29,10 +27,8 @@ export const StyledButton = styled('button', {
   background: 'none',
 
   '& svg': {
-    width: '17px',
-    height: '17px',
-
-    marginLeft: '20px',
+    width: '18px',
+    height: '18px',
   },
 
   defaultVariants: {
@@ -125,6 +121,12 @@ export const StyledButton = styled('button', {
       large: {
         width: '400px',
         height: '190px',
+      },
+    },
+
+    rounded: {
+      true: {
+        borderRadius: '3px',
       },
     },
   },

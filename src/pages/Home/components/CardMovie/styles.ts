@@ -1,7 +1,6 @@
 import { styled } from '../../../../config/stitches.config';
 
 export const StyledCardMovie = styled('div', {
-  background: 'red',
   margin: '0 auto',
 
   borderRadius: 5,
@@ -10,7 +9,7 @@ export const StyledCardMovie = styled('div', {
 
   '&:hover': {
     '& img': {
-      transform: 'scale(1.1)',
+      transform: 'scale(1.05)',
     },
   },
 });

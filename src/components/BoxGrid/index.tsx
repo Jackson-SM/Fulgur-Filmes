@@ -1,11 +1,16 @@
 import React from 'react';
 
-import { StyledBoxGrid } from './styles';
+import { ContainerItems, StyledBoxGrid } from './styles';
 
 type PropsBoxGrid = {
   children: React.ReactNode;
 };
 
 export function BoxGrid({ children }: PropsBoxGrid) {
-  return <StyledBoxGrid>{children}</StyledBoxGrid>;
+  return (
+    <StyledBoxGrid>
+      <span>More Watcheds</span>
+      <ContainerItems>{children}</ContainerItems>
+    </StyledBoxGrid>
+  );
 }

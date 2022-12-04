@@ -14,7 +14,7 @@ export const lightTheme = createTheme({
     background: ' hsl(0, 0%, 95%)',
     backgroundLight: 'hsl(0, 0%,80%)',
 
-    text: 'hsl(0, 0%, 20%)',
-    textDark: 'hsl(0, 0%,10%)',
+    text: 'hsl(0, 0%, 10%)',
+    textDark: 'hsl(0, 0%,5%)',
   },
 });
