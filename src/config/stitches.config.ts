@@ -20,12 +20,12 @@ export const { styled, css, globalCss, theme, createTheme, keyframes } = createS
       backgroundLight: 'hsl(0, 0%, 10%)',
 
       text: 'hsl(0, 0%, 95%)',
-      textDark: 'hsl(0, 0%, 85%)',
+      textDark: 'hsl(0, 0%, 90%)',
     },
   },
   utils: {
     linearGradient: (value: string) => ({
-      backgroundGradient: `linear-gradient(${value})`,
+      background: `linear-gradient(${value})`,
     }),
   },
 });

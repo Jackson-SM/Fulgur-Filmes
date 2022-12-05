@@ -6,7 +6,7 @@ import { handleTheme, styled } from '../../config/stitches.config';
 
 export const StyledButton = styled('button', {
   textDecoration: 'none',
-  color: '$text',
+  color: 'white',
   border: 'none',
 
   display: 'flex',
@@ -47,35 +47,41 @@ export const StyledButton = styled('button', {
       default: {
         border: '1px solid',
         borderColor: '$text',
-        color: '$background',
+        color: '$text',
 
         '&:hover': {
           background: '$text',
+          color: '$background',
         },
       },
       primary: {
         border: '1px solid',
         borderColor: '$primary',
+        color: '$text',
 
         '&:hover': {
           background: '$primary',
-          color: 'white',
+          color: '$background',
         },
       },
       secondary: {
         border: '1px solid',
         borderColor: '$secundary',
+        color: '$text',
 
         '&:hover': {
           background: '$secundary',
+          color: '$background',
         },
       },
       tertiary: {
         border: '1px solid',
         borderColor: '$tertiary',
+        color: '$text',
 
         '&:hover': {
           background: '$tertiary',
+          color: '$background',
         },
       },
     },
@@ -119,8 +125,8 @@ export const StyledButton = styled('button', {
         height: '40px',
       },
       large: {
-        width: '400px',
-        height: '190px',
+        width: '150px',
+        height: '50px',
       },
     },
 

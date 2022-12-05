@@ -15,6 +15,6 @@ export const darkTheme = createTheme({
     backgroundLight: 'hsl(0, 0%, 10%)',
 
     text: 'hsl(0, 0%, 95%)',
-    textDark: 'hsl(0, 0%, 80%)',
+    textDark: 'hsl(0, 0%, 90%)',
   },
 });

@@ -12,7 +12,7 @@ export const lightTheme = createTheme({
     tertiaryLight: 'hsl(203, 83%, 79%)',
 
     background: ' hsl(0, 0%, 95%)',
-    backgroundLight: 'hsl(0, 0%,80%)',
+    backgroundLight: 'hsl(0, 0%,90%)',
 
     text: 'hsl(0, 0%, 10%)',
     textDark: 'hsl(0, 0%,5%)',
