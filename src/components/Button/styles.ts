@@ -1,10 +1,11 @@
 import { CircularProgress } from '@mui/material';
 import { whiteA } from '@radix-ui/colors';
 import { lighten } from 'polished';
+import { Link } from 'react-router-dom';
 
 import { handleTheme, styled } from '../../config/stitches.config';
 
-export const StyledButton = styled('button', {
+const ButtonCSS = {
   textDecoration: 'none',
   color: 'white',
   border: 'none',
@@ -136,7 +137,11 @@ export const StyledButton = styled('button', {
       },
     },
   },
-});
+};
+
+export const StyledButton = styled('button', ButtonCSS);
+
+export const StyledButtonLink = styled(Link, ButtonCSS);
 
 export const CircularProgressButton = styled(CircularProgress, {
   padding: '0',

@@ -1,6 +1,16 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { Api } from '../../api/api';
+
+export interface IUser {
+  id: number;
+  email: string;
+  name: string;
+  password: string;
+  level: number;
+  created_at: Date;
+  updated_at: Date;
+}
 
 type AuthContextProps = {
   isLoading: boolean;
@@ -9,6 +19,7 @@ type AuthContextProps = {
   logout: () => Promise<void>;
   userVerifyAndReturned: () => void;
   register: (email: string, name: string, password: string) => void;
+  user: IUser | undefined;
 };
 
 export const AuthContext = React.createContext({} as AuthContextProps);
@@ -22,15 +33,6 @@ type isErrorProps = {
   message: string;
 };
 
-export interface IUser {
-  id: number;
-  email: string;
-  name: string;
-  password: string;
-  created_at: Date;
-  updated_at: Date;
-}
-
 export interface IUserAxiosResponse {
   user: IUser;
 }
@@ -43,6 +45,7 @@ export interface ITokenAxiosResponse {
 
 export function AuthProvider({ children }: AuthProviderProps) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [user, setUser] = useState<IUser | undefined>();
   const [isLogged, setIsLogged] = useState<boolean>(() => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -109,25 +112,28 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
   };
 
-  const userVerifyAndReturned = async () => {
-    const token = localStorage.getItem('token');
-
-    try {
-      setIsLoading(true);
-      const { data } = await Api.post<IUserAxiosResponse>('auth/verify');
-
-      const { user } = data;
-
-      console.log(user);
-    } catch (err) {
-      logout();
-    } finally {
-      setIsLoading(false);
+  const userVerifyAndReturned = useCallback(async () => {
+    if (isLogged) {
+      try {
+        setIsLoading(true);
+        const { data } = await Api.post<IUserAxiosResponse>('auth/verify');
+        setUser(data.user);
+      } catch (err) {
+        logout();
+      } finally {
+        setInterval(() => {
+          setIsLoading(false);
+        }, 1000);
+      }
     }
-  };
+  }, [user]);
+
+  useEffect(() => {
+    userVerifyAndReturned();
+  }, []);
 
   return (
-    <AuthContext.Provider value={{ isLoading, isLogged, login, logout, register, userVerifyAndReturned }}>
+    <AuthContext.Provider value={{ isLoading, isLogged, login, logout, register, userVerifyAndReturned, user }}>
       {children}
     </AuthContext.Provider>
   );

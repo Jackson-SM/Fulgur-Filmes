@@ -9,6 +9,8 @@ import { Home } from './pages/Home';
 import { Index } from './pages/Index';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
+import { Upload } from './pages/Upload';
+import { UploadVideo } from './pages/UploadVideo';
 import { GlobalCss } from './styled/GlobalCss';
 
 type RouteProps = {
@@ -16,17 +18,13 @@ type RouteProps = {
 };
 
 export function PublicRoute({ children }: RouteProps) {
-  const { isLogged, isLoading } = useAuth();
+  const { isLogged } = useAuth();
 
   return isLogged ? <Navigate to="/" /> : children;
 }
 
 export function PrivateRoute({ children }: RouteProps) {
-  const { isLogged, isLoading, userVerifyAndReturned } = useAuth();
-
-  useEffect(() => {
-    userVerifyAndReturned();
-  }, []);
+  const { isLogged, isLoading, user } = useAuth();
 
   if (isLoading) {
     return <ScreenLoading />;
@@ -36,7 +34,12 @@ export function PrivateRoute({ children }: RouteProps) {
 }
 
 export function HomeRenderingCondition() {
-  const { isLogged, isLoading, userVerifyAndReturned } = useAuth();
+  const { isLogged, isLoading } = useAuth();
+
+  if (isLoading) {
+    return <ScreenLoading />;
+  }
+
   if (isLogged) {
     return <Home />;
   }
@@ -66,6 +69,19 @@ function App() {
           </PublicRoute>
         }
       />
+
+      <Route path="/managment">
+        <Route
+          path="upload"
+          element={
+            <PrivateRoute>
+              <Upload />
+            </PrivateRoute>
+          }
+        >
+          <Route path="video" element={<UploadVideo />} />
+        </Route>
+      </Route>
     </Routes>
   );
 }

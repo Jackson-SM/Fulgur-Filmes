@@ -2,7 +2,7 @@ import { Switch } from '@mui/material';
 
 import { styled } from '../../../../config/stitches.config';
 
-export const ContainerOptions = styled('div', {
+export const ContainerOptionsUser = styled('div', {
   display: 'flex',
   alignItems: 'center',
   gap: '5px',

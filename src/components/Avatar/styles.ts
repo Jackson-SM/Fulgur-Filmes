@@ -99,8 +99,10 @@ export const DropdownItem = styled(DropdownMenu.Item, {
   paddingLeft: 15,
   outline: 'none',
   fontSize: 14,
-  color: '$primaryLight',
+  color: '$secundaryLight',
   cursor: 'default',
+
+  textDecoration: 'none',
 
   transition: 'all ease 130ms',
 
@@ -110,7 +112,7 @@ export const DropdownItem = styled(DropdownMenu.Item, {
   justifyContent: 'space-between',
 
   '&:hover': {
-    background: '$primary',
+    background: '$secundary',
     color: 'white',
   },
 });
@@ -119,6 +121,6 @@ export const DropdownArrow = styled(DropdownMenu.Arrow, { fill: '$backgroundLigh
 
 export const DropdownMenuSeparator = styled(DropdownMenu.Separator, {
   height: 1,
-  backgroundColor: '$primary',
+  backgroundColor: '$secundary',
   margin: 10,
 });

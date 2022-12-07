@@ -1,10 +1,12 @@
 import {
   BellIcon,
+  DashboardIcon,
   EnvelopeClosedIcon,
   ExitIcon,
   GearIcon,
   PersonIcon,
   QuestionMarkCircledIcon,
+  UploadIcon,
 } from '@radix-ui/react-icons';
 import React from 'react';
 
@@ -39,7 +41,7 @@ export function AvatarPerson() {
 }
 
 export function AvatarDropdown() {
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
 
   return (
     <DropdownRoot>
@@ -48,7 +50,7 @@ export function AvatarDropdown() {
       </DropdownTrigger>
       <DropdownPortal>
         <DropdownContent>
-          <DropdownLabel>Jackson Magalhães</DropdownLabel>
+          <DropdownLabel>{user?.name}</DropdownLabel>
           <DropdownMenuSeparator />
           <DropdownGroup>
             <DropdownLabel>General</DropdownLabel>
@@ -63,6 +65,16 @@ export function AvatarDropdown() {
             </DropdownItem>
             <DropdownItem>
               Settings <GearIcon />
+            </DropdownItem>
+          </DropdownGroup>
+          <DropdownMenuSeparator />
+          <DropdownGroup>
+            <DropdownLabel>Managment</DropdownLabel>
+            <DropdownItem as="a" href="/managment/panel">
+              Panel <DashboardIcon />
+            </DropdownItem>
+            <DropdownItem as="a" href="/managment/upload">
+              Upload <UploadIcon />
             </DropdownItem>
           </DropdownGroup>
           <DropdownMenuSeparator />
