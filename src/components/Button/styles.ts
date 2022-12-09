@@ -46,8 +46,7 @@ const ButtonCSS = {
   variants: {
     outlined: {
       default: {
-        border: '1px solid',
-        borderColor: '$text',
+        border: '1px solid $background',
         color: '$text',
 
         '&:hover': {
@@ -62,7 +61,7 @@ const ButtonCSS = {
 
         '&:hover': {
           background: '$primary',
-          color: '$background',
+          color: 'white',
         },
       },
       secondary: {
@@ -72,7 +71,7 @@ const ButtonCSS = {
 
         '&:hover': {
           background: '$secundary',
-          color: '$background',
+          color: 'white',
         },
       },
       tertiary: {
@@ -82,7 +81,7 @@ const ButtonCSS = {
 
         '&:hover': {
           background: '$tertiary',
-          color: '$background',
+          color: 'white',
         },
       },
     },

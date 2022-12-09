@@ -1,3 +1,7 @@
 import { styled } from '../../config/stitches.config';
 
-export const ContainerUpload = styled('div', {});
+export const ContainerUploadPage = styled('div', {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+});

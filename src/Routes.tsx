@@ -10,7 +10,6 @@ import { Index } from './pages/Index';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 import { Upload } from './pages/Upload';
-import { UploadVideo } from './pages/UploadVideo';
 import { GlobalCss } from './styled/GlobalCss';
 
 type RouteProps = {
@@ -78,9 +77,7 @@ function App() {
               <Upload />
             </PrivateRoute>
           }
-        >
-          <Route path="video" element={<UploadVideo />} />
-        </Route>
+        />
       </Route>
     </Routes>
   );
