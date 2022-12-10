@@ -9,7 +9,7 @@ function OptionSelect({ children, ...props }: PropsOptionSelect) {
 }
 
 interface IOptions {
-  value: string;
+  value: string | number;
   label: string;
 }
 
