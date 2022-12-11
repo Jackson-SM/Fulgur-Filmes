@@ -7,7 +7,7 @@ import { LinksNavbarHome } from './components/LinksNavbarHome';
 import { Main } from './components/Main';
 import { OptionsFiltered } from './components/OptionsFiltered';
 import { OptionsUser } from './components/OptionsUser';
-import { Top10Watched } from './components/Top10Watched';
+import { FeaturedVideos } from './components/FeaturedVideos';
 import { ContainerCards, HomeContainer } from './styles';
 
 export function Home() {
@@ -25,7 +25,7 @@ export function Home() {
         <Banner />
         <ContainerCards>
           <OptionsFiltered />
-          <Top10Watched />
+          <FeaturedVideos />
         </ContainerCards>
       </Main>
     </HomeContainer>

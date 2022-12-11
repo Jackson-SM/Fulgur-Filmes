@@ -7,6 +7,8 @@ export const StyledCardMovie = styled('div', {
 
   overflow: 'hidden',
 
+  width: '200px',
+
   '&:hover': {
     '& img': {
       transform: 'scale(1.05)',

@@ -1,12 +1,19 @@
 import React from 'react';
 
-import imgCard from '../../../../assets/movies/card/doctor_strange_multiverse.jpeg';
+import { IVideoData } from '../../../../repositories/IVideoData';
 import { StyledCardMovie, StyledImgCard } from './styles';
 
-export function CardMovie() {
+interface ICardMovieProps extends React.ComponentProps<typeof StyledCardMovie> {
+  data?: IVideoData;
+}
+
+export function CardMovie({ data, ...props }: ICardMovieProps) {
+  const coverImage = `http://localhost:3333/images/${data?.id}/cover.jpeg`;
+
   return (
-    <StyledCardMovie>
-      <StyledImgCard src={imgCard} />
+    <StyledCardMovie {...props}>
+      <StyledImgCard src={coverImage} />
+      <h1>{data?.title}</h1>
     </StyledCardMovie>
   );
 }
