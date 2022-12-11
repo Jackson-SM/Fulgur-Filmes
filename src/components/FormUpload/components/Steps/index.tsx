@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Control, Controller, FieldValues, useForm, UseFormHandleSubmit } from 'react-hook-form';
 
 import { Api } from '../../../../api/api';
+import { BoxGrid } from '../../../BoxGrid';
 import { Button } from '../../../Button';
 import { TextColor } from '../../../TextColor';
 import { InputFile, InputUpload } from '../InputUpload';
@@ -23,6 +24,7 @@ const defaultValuesPropsForm = {
   type: 'movie',
   classificationIndicative: 14,
   cover: '',
+  background: '',
 };
 
 type PropsStepsControl = {
@@ -109,16 +111,17 @@ export function Steps() {
     },
   });
 
-  const onSubmit = handleSubmit((data) => {
+  const onSubmit = handleSubmit(async (data) => {
     const formData = new FormData();
     formData.append('title', data.title);
     formData.append('sinopse', data.sinopse);
     formData.append('classificationIndicative', `${data.classificationIndicative}`);
     formData.append('type', data.type);
     formData.append('year', `${data.year}`);
-    formData.append('cover', data.cover[0]);
+    formData.append('coverImage', data.cover[0]);
+    formData.append('backgroundImage', data.background[0]);
 
-    const req = Api.post('video', formData);
+    await Api.post('video', formData);
   });
 
   // eslint-disable-next-line default-case
@@ -126,13 +129,23 @@ export function Steps() {
     <StyledFormUpload onSubmit={onSubmit} encType="multipart/form-data">
       <ContainerFormUpload>
         <VideoInfo control={control} />
-        <InputField>
-          <LabelInputField>File</LabelInputField>
-          <InputFile {...register('cover')} />
-        </InputField>
+        <BoxRowFields>
+          <InputField>
+            <Button as="label" outlined="secondary" htmlFor="cover" css={{ width: '100%' }}>
+              Cover Image
+            </Button>
+            <InputFile {...register('cover')} id="cover" />
+          </InputField>
+          <InputField>
+            <Button as="label" outlined="secondary" htmlFor="background" css={{ width: '100%' }}>
+              Background Image
+            </Button>
+            <InputFile {...register('background')} id="background" />
+          </InputField>
+        </BoxRowFields>
         <ContainerContinueOrBack>
-          <Button size="medium" color="primary">
-            Continue
+          <Button type="submit" size="medium" color="primary">
+            Upload
           </Button>
         </ContainerContinueOrBack>
       </ContainerFormUpload>

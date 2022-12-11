@@ -13,6 +13,6 @@ export const StyledBoxGrid = styled('div', {
 
 export const ContainerItems = styled('div', {
   display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 200px))',
   gap: 15,
 });

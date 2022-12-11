@@ -1,12 +1,9 @@
-import { CircularProgress } from '@mui/material';
-import { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
-import { Api } from './api/api';
 import { ScreenLoading } from './components/ScreenLoading';
 import { useAuth } from './hooks/useAuth';
+import { Dashboard } from './pages/Dashboard';
 import { Home } from './pages/Home';
-import { Index } from './pages/Index';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 import { Upload } from './pages/Upload';
@@ -23,7 +20,7 @@ export function PublicRoute({ children }: RouteProps) {
 }
 
 export function PrivateRoute({ children }: RouteProps) {
-  const { isLogged, isLoading, user } = useAuth();
+  const { isLogged, isLoading } = useAuth();
 
   if (isLoading) {
     return <ScreenLoading />;
@@ -32,26 +29,19 @@ export function PrivateRoute({ children }: RouteProps) {
   return isLogged ? children : <Navigate to="/login" />;
 }
 
-export function HomeRenderingCondition() {
-  const { isLogged, isLoading } = useAuth();
-
-  if (isLoading) {
-    return <ScreenLoading />;
-  }
-
-  if (isLogged) {
-    return <Home />;
-  }
-
-  return <Index />;
-}
-
 function App() {
   GlobalCss();
 
   return (
     <Routes>
-      <Route path="/" element={<HomeRenderingCondition />} />
+      <Route
+        path="/"
+        element={
+          <PrivateRoute>
+            <Home />
+          </PrivateRoute>
+        }
+      />
       <Route
         path="/login"
         element={
@@ -69,7 +59,7 @@ function App() {
         }
       />
 
-      <Route path="/managment">
+      <Route path="/dashboard" element={<Dashboard />}>
         <Route
           path="upload"
           element={

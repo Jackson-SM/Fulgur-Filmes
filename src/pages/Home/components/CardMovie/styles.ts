@@ -1,12 +1,11 @@
 import { styled } from '../../../../config/stitches.config';
 
 export const StyledCardMovie = styled('div', {
-  margin: '0 auto',
-
   borderRadius: 5,
 
   overflow: 'hidden',
 
+  maxHeight: '300px',
   width: '200px',
 
   '&:hover': {

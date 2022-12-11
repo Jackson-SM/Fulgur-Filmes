@@ -1,3 +1,5 @@
+import { IAssetsVideo } from './IAssetsVideo';
+
 export interface IVideoData {
   id: number;
   title: string;
@@ -11,4 +13,5 @@ export interface IVideoData {
   year: number;
   updated_at: Date;
   created_at: Date;
+  assets: IAssetsVideo;
 }

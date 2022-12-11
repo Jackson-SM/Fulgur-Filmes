@@ -4,6 +4,8 @@ import { CircularProgressButton, StyledButton } from './styles';
 
 type ButtonProps = React.ComponentProps<typeof StyledButton> & {
   loading?: boolean;
+  as?: React.ElementType;
+  htmlFor?: string | undefined;
 };
 
 // eslint-disable-next-line react/prop-types

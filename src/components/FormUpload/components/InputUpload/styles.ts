@@ -12,4 +12,8 @@ export const StyledInputUpload = styled('input', {
   fontFamily: 'Questrial',
 
   color: '$text',
+
+  '&[type="file"]': {
+    display: 'none',
+  },
 });

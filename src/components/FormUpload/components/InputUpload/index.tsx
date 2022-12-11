@@ -9,5 +9,5 @@ export function InputUpload({ ...props }: PropsInputUpload) {
 }
 
 export const InputFile = forwardRef<HTMLInputElement, PropsInputUpload>((props, ref) => {
-  return <input type="file" accept="image/*" required {...props} ref={ref} />;
+  return <StyledInputUpload type="file" accept="image/*" required {...props} ref={ref} />;
 });

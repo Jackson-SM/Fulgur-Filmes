@@ -8,12 +8,11 @@ interface ICardMovieProps extends React.ComponentProps<typeof StyledCardMovie> {
 }
 
 export function CardMovie({ data, ...props }: ICardMovieProps) {
-  const coverImage = `http://localhost:3333/images/${data?.id}/cover.jpeg`;
+  const coverImage = `http://localhost:3333/images/${data?.id}/${data?.assets.cover_image}`;
 
   return (
     <StyledCardMovie {...props}>
       <StyledImgCard src={coverImage} />
-      <h1>{data?.title}</h1>
     </StyledCardMovie>
   );
 }
