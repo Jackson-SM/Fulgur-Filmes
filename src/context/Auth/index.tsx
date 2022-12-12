@@ -1,16 +1,7 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { Api } from '../../api/api';
-
-export interface IUser {
-  id: number;
-  email: string;
-  name: string;
-  password: string;
-  level: number;
-  created_at: Date;
-  updated_at: Date;
-}
+import { IUser } from '../../repositories/IUser';
 
 type AuthContextProps = {
   isLoading: boolean;
@@ -33,10 +24,6 @@ type isErrorProps = {
   message: string;
 };
 
-export interface IUserAxiosResponse {
-  user: IUser;
-}
-
 export interface ITokenAxiosResponse {
   type: string;
   token: string;
@@ -44,7 +31,7 @@ export interface ITokenAxiosResponse {
 }
 
 export function AuthProvider({ children }: AuthProviderProps) {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [user, setUser] = useState<IUser | undefined>();
   const [isLogged, setIsLogged] = useState<boolean>(() => {
     const token = localStorage.getItem('token');
@@ -114,17 +101,17 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   const userVerifyAndReturned = useCallback(async () => {
     if (isLogged) {
-      try {
-        setIsLoading(true);
-        const { data } = await Api.post<IUserAxiosResponse>('auth/verify');
-        setUser(data.user);
-      } catch (err) {
-        logout();
-      } finally {
-        setInterval(() => {
+      setIsLoading(true);
+      await Api.post<IUser>('auth/verify')
+        .then(({ data }) => {
+          setUser(data);
+        })
+        .catch((error) => {
+          logout();
+        })
+        .finally(() => {
           setIsLoading(false);
-        }, 1000);
-      }
+        });
     }
   }, [user]);
 

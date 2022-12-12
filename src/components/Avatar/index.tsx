@@ -69,11 +69,11 @@ export function AvatarDropdown() {
           </DropdownGroup>
           <DropdownMenuSeparator />
           <DropdownGroup>
-            <DropdownLabel>Managment</DropdownLabel>
-            <DropdownItem as="a" href="/managment/panel">
+            <DropdownLabel>Dashboard</DropdownLabel>
+            <DropdownItem as="a" href="/dashboard/panel">
               Panel <DashboardIcon />
             </DropdownItem>
-            <DropdownItem as="a" href="/managment/upload">
+            <DropdownItem as="a" href="/dashboard/upload">
               Upload <UploadIcon />
             </DropdownItem>
           </DropdownGroup>

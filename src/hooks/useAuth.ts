@@ -3,14 +3,13 @@ import { useContext } from 'react';
 import { AuthContext } from '../context/Auth';
 
 export const useAuth = () => {
-  const { isLoading, isLogged, login, logout, register, userVerifyAndReturned, user } = useContext(AuthContext);
+  const { isLoading, isLogged, login, logout, register, user } = useContext(AuthContext);
 
   return {
     isLoading,
     isLogged,
     login,
     logout,
-    userVerifyAndReturned,
     register,
     user,
   };
