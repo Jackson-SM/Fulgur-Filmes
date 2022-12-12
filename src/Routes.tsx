@@ -12,6 +12,7 @@ import { GlobalCss } from './styled/GlobalCss';
 
 type RouteProps = {
   children: JSX.Element;
+  levelAccess?: number;
 };
 
 export function PublicRoute({ children }: RouteProps) {
@@ -20,14 +21,18 @@ export function PublicRoute({ children }: RouteProps) {
   return isLogged ? <Navigate to="/" /> : children;
 }
 
-export function PrivateRoute({ children }: RouteProps) {
-  const { isLogged, isLoading } = useAuth();
+export function PrivateRoute({ levelAccess, children }: RouteProps) {
+  const { isLogged, isLoading, user } = useAuth();
 
   if (isLoading) {
     return <ScreenLoading />;
   }
 
-  return isLogged ? children : <Navigate to="/login" />;
+  if (Number(user?.level) >= Number(levelAccess || 1)) {
+    return isLogged ? children : <Navigate to="/login" />;
+  }
+
+  return <Navigate to="/" />;
 }
 
 function App() {
