@@ -8,7 +8,7 @@ import { Button } from '../../../../components/Button';
 import { Form } from '../../../../components/Form';
 import { Input } from '../../../../components/Input';
 import { useAuth } from '../../../../hooks/useAuth';
-import { FormContainer, InputField, Label } from '../../../Login/components/FormLogin/styles';
+import { FormContainer } from '../../../Login/components/FormLogin/styles';
 
 export function FormRegister() {
   const { control, handleSubmit } = useForm({
@@ -26,22 +26,11 @@ export function FormRegister() {
         <img src={logo} alt="" />
       </div>
       <Form onSubmit={handleSubmit((data) => register(data.email, data.name, data.password))}>
-        <InputField>
-          <Label htmlFor="email">Email</Label>
-          <Controller control={control} name="email" render={({ field }) => <Input {...field} ref={null} />} />
-        </InputField>
-        <InputField>
-          <Label htmlFor="password">Name</Label>
-          <Controller control={control} name="name" render={({ field }) => <Input {...field} ref={null} />} />
-        </InputField>
-        <InputField>
-          <Label htmlFor="password">Password</Label>
-          <Controller control={control} name="password" render={({ field }) => <Input {...field} ref={null} />} />
-        </InputField>
-        <InputField>
-          <Label htmlFor="password">Confirm Password</Label>
-          <Input type="password" />
-        </InputField>
+        <Controller control={control} name="email" render={({ field }) => <Input {...field} ref={null} />} />
+
+        <Controller control={control} name="name" render={({ field }) => <Input {...field} ref={null} />} />
+
+        <Controller control={control} name="password" render={({ field }) => <Input {...field} ref={null} />} />
         <Button loading={isLoading} type="submit" css={{ width: '100%' }} color="primary">
           Continue
           <ArrowRightIcon />

@@ -74,12 +74,14 @@ export function AuthProvider({ children }: AuthProviderProps) {
   };
 
   const logout = async () => {
+    setIsLoading(true);
     const token = localStorage.getItem('token');
     Api.defaults.headers.Authorization = `Bearer ${token}`;
     const { data } = await Api.post('auth/logout');
     if (data.revoke) {
       removeTokenInLocalStorage('token');
     }
+    setIsLoading(false);
   };
 
   const register = async (email: string, name: string, password: string) => {
@@ -100,19 +102,17 @@ export function AuthProvider({ children }: AuthProviderProps) {
   };
 
   const userVerifyAndReturned = useCallback(async () => {
+    setIsLoading(true);
     if (isLogged) {
-      setIsLoading(true);
       await Api.post<IUser>('auth/verify')
         .then(({ data }) => {
           setUser(data);
         })
         .catch((error) => {
           logout();
-        })
-        .finally(() => {
-          setIsLoading(false);
         });
     }
+    setIsLoading(false);
   }, [user]);
 
   useEffect(() => {

@@ -28,11 +28,12 @@ export function PrivateRoute({ levelAccess, children }: RouteProps) {
     return <ScreenLoading />;
   }
 
-  if (Number(user?.level) >= Number(levelAccess || 1)) {
-    return isLogged ? children : <Navigate to="/login" />;
+  if (isLogged) {
+    const levelAccessIsEqual = Number(user?.level) >= Number(levelAccess || 1);
+    return levelAccessIsEqual ? children : <Navigate to="/" />;
   }
 
-  return <Navigate to="/" />;
+  return <Navigate to="/login" />;
 }
 
 function App() {
@@ -67,15 +68,15 @@ function App() {
         }
       />
 
-      <Route path="/dashboard" element={<Dashboard />}>
-        <Route
-          path="upload"
-          element={
-            <PrivateRoute>
-              <Upload />
-            </PrivateRoute>
-          }
-        />
+      <Route
+        path="/dashboard"
+        element={
+          <PrivateRoute levelAccess={2}>
+            <Dashboard />
+          </PrivateRoute>
+        }
+      >
+        <Route path="upload" element={<Upload />} />
       </Route>
     </Routes>
   );

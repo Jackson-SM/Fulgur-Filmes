@@ -1,5 +1,3 @@
-import { whiteA } from '@radix-ui/colors';
-
 import { styled } from '../../../../config/stitches.config';
 
 export const FormContainer = styled('div', {
@@ -10,13 +8,12 @@ export const FormContainer = styled('div', {
 
   padding: '20px',
 
-  gap: '20px',
-
   '& .top_form': {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
-    gap: '10px',
+
+    padding: '30px 0 30px 0',
+    gap: 5,
 
     '& span': {
       fontSize: '30px',
@@ -29,16 +26,3 @@ export const FormContainer = styled('div', {
     },
   },
 });
-
-export const InputField = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
-
-  width: '100%',
-
-  gap: '8px',
-
-  paddingBottom: '10px',
-});
-
-export const Label = styled('label', {});

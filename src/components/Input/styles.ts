@@ -3,17 +3,17 @@ import { darken } from 'polished';
 import { handleTheme, styled } from '../../config/stitches.config';
 
 export const StyledInput = styled('input', {
-  background: 'none',
+  background: '$background',
   outline: 'none',
-  border: `1px solid ${darken(0.4, handleTheme.text)}`,
-  padding: '10px',
+  border: `2px solid $backgroundLight`,
+  padding: '13px',
   borderRadius: '3px',
 
-  transition: 'border ease 100ms',
+  transition: 'border ease 200ms',
 
   width: '100%',
 
-  fontSize: '15px',
+  fontSize: '16px',
 
   color: `white`,
   fontFamily: 'Questrial',
@@ -23,7 +23,10 @@ export const StyledInput = styled('input', {
   },
 
   variants: {
-    styled: {
+    border: {
+      rounded: {
+        borderRadius: 3,
+      },
       circle: {
         borderRadius: '60px',
       },

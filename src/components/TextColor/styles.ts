@@ -3,6 +3,8 @@ import { styled } from '../../config/stitches.config';
 export const StyledTextColor = styled('h1', {
   color: '$text',
 
+  textDecoration: 'none',
+
   '& strong': {
     color: '$primary',
   },

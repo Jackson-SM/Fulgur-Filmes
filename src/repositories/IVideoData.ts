@@ -1,7 +1,7 @@
 import { IAssetsVideo } from './IAssetsVideo';
 
 export interface IVideoData {
-  id: number;
+  id: string;
   title: string;
   sinopse: string;
   classificationIndicative: number;
