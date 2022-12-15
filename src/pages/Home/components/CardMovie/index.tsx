@@ -11,7 +11,7 @@ export function CardMovie({ data, ...props }: ICardMovieProps) {
   const coverImage = `http://localhost:3333/images/${data?.id}/${data?.assets.cover_image}`;
 
   return (
-    <StyledCardMovie {...props}>
+    <StyledCardMovie {...props} href={`/watch?video=${data?.id}`}>
       <StyledImgCard src={coverImage} />
     </StyledCardMovie>
   );

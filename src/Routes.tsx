@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
 
 import { ScreenLoading } from './components/ScreenLoading';
 import { useAuth } from './hooks/useAuth';
@@ -8,6 +8,7 @@ import { Home } from './pages/Home';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 import { Upload } from './pages/Upload';
+import { Watch } from './pages/Watch';
 import { GlobalCss } from './styled/GlobalCss';
 
 type RouteProps = {
@@ -77,6 +78,17 @@ function App() {
         }
       >
         <Route path="upload" element={<Upload />} />
+      </Route>
+
+      <Route path="watch">
+        <Route
+          path=":videoId"
+          element={
+            <PrivateRoute>
+              <Watch />
+            </PrivateRoute>
+          }
+        />
       </Route>
     </Routes>
   );

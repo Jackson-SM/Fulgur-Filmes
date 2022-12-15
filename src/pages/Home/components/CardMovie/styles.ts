@@ -1,6 +1,6 @@
 import { styled } from '../../../../config/stitches.config';
 
-export const StyledCardMovie = styled('div', {
+export const StyledCardMovie = styled('a', {
   borderRadius: 5,
 
   overflow: 'hidden',
