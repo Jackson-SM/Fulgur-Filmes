@@ -5,5 +5,4 @@ export const HomeContainer = styled('nav', {});
 export const ContainerCards = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  padding: 40,
 });

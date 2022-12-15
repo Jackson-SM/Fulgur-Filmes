@@ -117,10 +117,11 @@ export function FormUpload() {
     formData.append('classificationIndicative', `${data.classificationIndicative}`);
     formData.append('type', data.type);
     formData.append('year', `${data.year}`);
-    formData.append('coverImage', data.cover[0]);
+    formData.append('cover', data.cover[0]);
     formData.append('backgroundImage', data.background[0]);
 
-    await Api.post('video', formData);
+    const { data: response } = await Api.post('video', formData);
+    console.log(response);
   });
 
   // eslint-disable-next-line default-case

@@ -53,6 +53,7 @@ export const DropdownTrigger = styled(DropdownMenu.Trigger, {
   background: 'transparent',
   outline: 'none',
   cursor: 'pointer',
+  border: 'none',
 });
 
 export const DropdownPortal = styled(DropdownMenu.Portal, {});
