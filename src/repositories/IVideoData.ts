@@ -4,10 +4,10 @@ export interface IVideoData {
   id: string;
   title: string;
   sinopse: string;
-  classificationIndicative: number;
+  classification_indicative: number;
   episodes: number;
   views: number;
-  seanons: number | null;
+  seasons: number | null;
   time: string | null;
   type: string;
   year: number;

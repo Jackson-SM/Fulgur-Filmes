@@ -1,14 +1,12 @@
 import React from 'react';
-import { Outlet, useParams } from 'react-router-dom';
+
+import { ContainerWatch } from './components/styles';
+import { Video } from './components/Video';
 
 export function Watch() {
-  const { videoId } = useParams();
-  console.log(videoId);
-
   return (
-    <div>
-      <h1>Watch Vídeo</h1>
-      <h2>{videoId}</h2>
-    </div>
+    <ContainerWatch>
+      <Video />
+    </ContainerWatch>
   );
 }

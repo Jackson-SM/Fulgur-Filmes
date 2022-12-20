@@ -27,6 +27,8 @@ const ButtonCSS = {
 
   background: 'none',
 
+  padding: '10px',
+
   '& svg': {
     width: '18px',
     height: '18px',
@@ -116,6 +118,10 @@ const ButtonCSS = {
       },
     },
     size: {
+      default: {
+        width: 'auto',
+        height: 'auto',
+      },
       small: {
         width: '80px',
         height: '30px',
