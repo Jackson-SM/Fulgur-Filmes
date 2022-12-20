@@ -3,6 +3,7 @@ import { Control, Controller, useForm } from 'react-hook-form';
 
 import { Api } from '../../api/api';
 import { Button } from '../Button';
+import { Input } from '../Input';
 import { TextColor } from '../TextColor';
 import { InputFile, InputUpload } from './components/InputUpload';
 import { SelectUpload } from './components/Select';
@@ -31,78 +32,6 @@ type PropsStepsControl = {
   onSubmit?: () => void;
 };
 
-export function VideoInfo({ control }: PropsStepsControl) {
-  const optionsType = [
-    { value: 'movie', label: 'Movie' },
-    { value: 'serie', label: 'Serie' },
-  ];
-  const optionsClassification = [
-    { value: 14, label: '14' },
-    { value: 15, label: '15' },
-    { value: 16, label: '16' },
-    { value: 17, label: '17' },
-    { value: 18, label: '18' },
-  ];
-
-  return (
-    <>
-      <TextColor size="medium" as="span">
-        Upload <strong>Flash</strong>
-      </TextColor>
-      <InputField>
-        <LabelInputField>Title</LabelInputField>
-        <Controller
-          name="title"
-          control={control}
-          render={({ field }) => <InputUpload {...field} ref={null} type="text" placeholder="Ex: Adão Negro" />}
-        />
-      </InputField>
-      <InputField>
-        <LabelInputField>Sinopse</LabelInputField>
-        <Controller
-          name="sinopse"
-          control={control}
-          render={({ field }) => (
-            <TextArea
-              {...field}
-              ref={null}
-              placeholder="Ex: lorem ipsum dolor it exist equals age"
-              cols={40}
-              rows={10}
-            />
-          )}
-        />
-      </InputField>
-      <BoxRowFields>
-        <InputField>
-          <LabelInputField>Year</LabelInputField>
-          <Controller
-            name="year"
-            control={control}
-            render={({ field }) => <InputUpload {...field} ref={null} type="number" />}
-          />
-        </InputField>
-        <InputField>
-          <LabelInputField>Type</LabelInputField>
-          <Controller
-            name="type"
-            control={control}
-            render={({ field }) => <SelectUpload {...field} ref={null} options={optionsType} />}
-          />
-        </InputField>
-      </BoxRowFields>
-      <InputField>
-        <LabelInputField>Classification</LabelInputField>
-        <Controller
-          name="classificationIndicative"
-          control={control}
-          render={({ field }) => <SelectUpload {...field} ref={null} options={optionsClassification} />}
-        />
-      </InputField>
-    </>
-  );
-}
-
 export function FormUpload() {
   const { control, handleSubmit, register } = useForm({
     defaultValues: {
@@ -124,11 +53,62 @@ export function FormUpload() {
     console.log(response);
   });
 
+  const optionsType = [
+    { value: 'movie', label: 'Movie' },
+    { value: 'serie', label: 'Serie' },
+  ];
+  const optionsClassification = [
+    { value: 14, label: '14' },
+    { value: 15, label: '15' },
+    { value: 16, label: '16' },
+    { value: 17, label: '17' },
+    { value: 18, label: '18' },
+  ];
+
   // eslint-disable-next-line default-case
   return (
     <StyledFormUpload onSubmit={onSubmit} encType="multipart/form-data">
       <ContainerFormUpload>
-        <VideoInfo control={control} />
+        <TextColor size="medium" as="span">
+          Fulgur <strong>Flix Upload</strong>
+        </TextColor>
+        <InputField>
+          <Controller
+            name="title"
+            control={control}
+            render={({ field }) => <Input {...field} ref={null} type="text" placeholder="Título do Vídeo" />}
+          />
+        </InputField>
+        <InputField>
+          <Controller
+            name="sinopse"
+            control={control}
+            render={({ field }) => <TextArea {...field} ref={null} placeholder="Sinopse" cols={40} rows={10} />}
+          />
+        </InputField>
+        <BoxRowFields>
+          <InputField>
+            <Controller
+              name="year"
+              control={control}
+              render={({ field }) => <InputUpload {...field} ref={null} type="number" />}
+            />
+          </InputField>
+          <InputField>
+            <Controller
+              name="type"
+              control={control}
+              render={({ field }) => <SelectUpload {...field} ref={null} options={optionsType} />}
+            />
+          </InputField>
+        </BoxRowFields>
+        <InputField>
+          <Controller
+            name="classificationIndicative"
+            control={control}
+            render={({ field }) => <SelectUpload {...field} ref={null} options={optionsClassification} />}
+          />
+        </InputField>
         <BoxRowFields>
           <InputField>
             <Button as="label" outlined="secondary" htmlFor="cover" css={{ width: '100%' }}>

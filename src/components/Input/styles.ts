@@ -1,6 +1,4 @@
-import { darken } from 'polished';
-
-import { handleTheme, styled } from '../../config/stitches.config';
+import { styled } from '../../config/stitches.config';
 
 export const StyledInput = styled('input', {
   background: '$background',

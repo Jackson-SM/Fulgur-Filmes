@@ -55,11 +55,13 @@ export function Video() {
         </ImplementsInformation>
         <DescriptionVideo>{video?.sinopse}</DescriptionVideo>
         <Box>
-          <Button color="primary" size="default" css={{ width: '80px', padding: 15, fontSize: 18 }}>
+          <Button color="primary" size="default" css={{ padding: 15, fontSize: 15, gap: 20 }}>
             <PlayIcon />
+            WATCH TRAILER
           </Button>
-          <Button color="primary" size="default" css={{ width: '80px', padding: 15, fontSize: 18 }}>
+          <Button color="primary" size="default" css={{ padding: 15, fontSize: 15, gap: 20 }}>
             <PlusIcon />
+            ADD LIST
           </Button>
         </Box>
       </ContainerInfoVideo>

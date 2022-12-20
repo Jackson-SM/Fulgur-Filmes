@@ -1,17 +1,12 @@
 import { styled } from '../../config/stitches.config';
 
 export const ContainerFormUpload = styled('div', {
-  width: 400,
-  height: 'auto',
   background: '$backgroundLight',
-
-  padding: 30,
-
-  borderRadius: 5,
+  padding: 10,
 
   display: 'flex',
   flexDirection: 'column',
-  gap: 25,
+  gap: 10,
 });
 
 export const BoxRowFields = styled('div', {

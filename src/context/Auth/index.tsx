@@ -64,6 +64,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       });
       setTokenInLocalStorage('token', data.token);
     } catch (err: any) {
+      setIsLoading(false);
       setIsError({
         status: err.response.status,
         message: 'Credencias inválidas',
@@ -85,6 +86,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   };
 
   const register = async (email: string, name: string, password: string) => {
+    setIsLoading(true);
     try {
       const { data } = await Api.post<ITokenAxiosResponse>('auth/register', {
         email,
@@ -98,7 +100,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
         status: err.response.status,
         message: 'Não foi possível completar o registro',
       });
+      setIsLoading(false);
     }
+
+    setIsLoading(false);
   };
 
   const userVerifyAndReturned = useCallback(async () => {

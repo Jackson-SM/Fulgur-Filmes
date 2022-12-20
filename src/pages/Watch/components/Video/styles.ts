@@ -50,7 +50,7 @@ export const DescriptionVideo = styled('p', {
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
 
-  backgroundImage: 'linear-gradient(to bottom,$text 80%,transparent)',
+  backgroundImage: 'linear-gradient(to bottom,$text 90%,transparent)',
 });
 
 export const ButtonWatchVideo = styled('button', {});
