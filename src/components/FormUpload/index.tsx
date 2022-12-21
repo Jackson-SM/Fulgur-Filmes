@@ -1,15 +1,19 @@
-import React from 'react';
-import { Control, Controller, useForm } from 'react-hook-form';
+/* eslint-disable jsx-a11y/alt-text */
+import { ImageIcon, UploadIcon } from '@radix-ui/react-icons';
+import React, { useState } from 'react';
+import { Controller, useForm } from 'react-hook-form';
 
 import { Api } from '../../api/api';
+import { CardVideoPreview } from '../../pages/Home/components/CardMovie';
 import { Button } from '../Button';
 import { Input } from '../Input';
 import { TextColor } from '../TextColor';
-import { InputFile, InputUpload } from './components/InputUpload';
+import { InputFile } from './components/InputUpload';
 import { SelectUpload } from './components/Select';
 import { TextArea } from './components/TextArea';
 import {
   BoxRowFields,
+  ButtonUploadCoverAndBackground,
   ContainerContinueOrBack,
   ContainerFormUpload,
   InputField,
@@ -25,14 +29,12 @@ const defaultValuesPropsForm = {
   classificationIndicative: 14,
   cover: '',
   background: '',
-};
-
-type PropsStepsControl = {
-  control: Control<typeof defaultValuesPropsForm>;
-  onSubmit?: () => void;
+  time: '',
 };
 
 export function FormUpload() {
+  const [coverPreviewImage, setCoverPreviewImage] = useState<string | ArrayBuffer | null | undefined>();
+
   const { control, handleSubmit, register } = useForm({
     defaultValues: {
       ...defaultValuesPropsForm,
@@ -46,6 +48,7 @@ export function FormUpload() {
     formData.append('classificationIndicative', `${data.classificationIndicative}`);
     formData.append('type', data.type);
     formData.append('year', `${data.year}`);
+    formData.append('time', `${data.time}`);
     formData.append('cover', data.cover[0]);
     formData.append('backgroundImage', data.background[0]);
 
@@ -53,21 +56,31 @@ export function FormUpload() {
     console.log(response);
   });
 
+  const getImageAndSetPreview = (change: React.ChangeEvent<HTMLInputElement>) => {
+    const file = change.target.files![0];
+
+    const reader = new FileReader();
+
+    reader.onload = (event) => {
+      const readerTarget = event.target;
+
+      const result = readerTarget?.result;
+
+      setCoverPreviewImage(result);
+    };
+
+    reader.readAsDataURL(file);
+  };
+
   const optionsType = [
     { value: 'movie', label: 'Movie' },
     { value: 'serie', label: 'Serie' },
-  ];
-  const optionsClassification = [
-    { value: 14, label: '14' },
-    { value: 15, label: '15' },
-    { value: 16, label: '16' },
-    { value: 17, label: '17' },
-    { value: 18, label: '18' },
   ];
 
   // eslint-disable-next-line default-case
   return (
     <StyledFormUpload onSubmit={onSubmit} encType="multipart/form-data">
+      {coverPreviewImage && <CardVideoPreview css={{ height: 300 }} resultFile={String(coverPreviewImage)} />}
       <ContainerFormUpload>
         <TextColor size="medium" as="span">
           Fulgur <strong>Flix Upload</strong>
@@ -79,6 +92,33 @@ export function FormUpload() {
             render={({ field }) => <Input {...field} ref={null} type="text" placeholder="Título do Vídeo" />}
           />
         </InputField>
+        <BoxRowFields>
+          <InputField>
+            <LabelInputField htmlFor="year">Year</LabelInputField>
+            <Controller
+              name="year"
+              control={control}
+              render={({ field }) => <Input {...field} ref={null} type="number" id="year" />}
+            />
+          </InputField>
+          <InputField>
+            <LabelInputField htmlFor="classificationIndicative">Classification</LabelInputField>
+            <Controller
+              name="classificationIndicative"
+              control={control}
+              render={({ field }) => (
+                <Input
+                  {...field}
+                  ref={null}
+                  type="number"
+                  id="classificationIndicative"
+                  maxLength={18}
+                  minLength={12}
+                />
+              )}
+            />
+          </InputField>
+        </BoxRowFields>
         <InputField>
           <Controller
             name="sinopse"
@@ -86,40 +126,38 @@ export function FormUpload() {
             render={({ field }) => <TextArea {...field} ref={null} placeholder="Sinopse" cols={40} rows={10} />}
           />
         </InputField>
-        <BoxRowFields>
-          <InputField>
-            <Controller
-              name="year"
-              control={control}
-              render={({ field }) => <InputUpload {...field} ref={null} type="number" />}
-            />
-          </InputField>
-          <InputField>
-            <Controller
-              name="type"
-              control={control}
-              render={({ field }) => <SelectUpload {...field} ref={null} options={optionsType} />}
-            />
-          </InputField>
-        </BoxRowFields>
         <InputField>
           <Controller
-            name="classificationIndicative"
+            name="type"
             control={control}
-            render={({ field }) => <SelectUpload {...field} ref={null} options={optionsClassification} />}
+            render={({ field }) => <SelectUpload {...field} ref={null} options={optionsType} />}
           />
         </InputField>
         <BoxRowFields>
           <InputField>
-            <Button as="label" outlined="secondary" htmlFor="cover" css={{ width: '100%' }}>
-              Cover Image
-            </Button>
-            <InputFile {...register('cover')} id="cover" />
+            <ButtonUploadCoverAndBackground
+              htmlFor="cover"
+              css={{
+                '&::before': {
+                  content: 'Cover',
+                },
+              }}
+            >
+              <ImageIcon />
+            </ButtonUploadCoverAndBackground>
+            <InputFile {...register('cover')} id="cover" onChange={getImageAndSetPreview} />
           </InputField>
           <InputField>
-            <Button as="label" outlined="secondary" htmlFor="background" css={{ width: '100%' }}>
-              Background Image
-            </Button>
+            <ButtonUploadCoverAndBackground
+              htmlFor="background"
+              css={{
+                '&::before': {
+                  content: 'Background',
+                },
+              }}
+            >
+              <UploadIcon />
+            </ButtonUploadCoverAndBackground>
             <InputFile {...register('background')} id="background" />
           </InputField>
         </BoxRowFields>

@@ -50,3 +50,64 @@ export const ContainerContinueOrBack = styled('div', {
     width: '100%',
   },
 });
+
+export const ButtonUploadCoverAndBackground = styled('label', {
+  background: '$primary',
+  color: 'white',
+
+  outline: 'none',
+  border: 'none',
+  borderRadius: '50%',
+
+  padding: '10px',
+
+  display: 'flex',
+  alignItems: 'center',
+
+  transition: 'all ease 130ms',
+
+  cursor: 'pointer',
+
+  position: 'relative',
+
+  '&:hover': {
+    background: '$primaryLight',
+
+    '&::before': {
+      opacity: 1,
+    },
+  },
+
+  '& svg': {
+    width: 20,
+    height: 20,
+  },
+
+  '&::before': {
+    content: '',
+
+    transition: 'opacity ease 130ms',
+
+    position: 'absolute',
+
+    width: '100px',
+    height: '20px',
+
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+
+    background: '$primaryLight',
+
+    borderRadius: 5,
+
+    top: '25%',
+    left: '110%',
+
+    pointerEvents: 'none',
+
+    opacity: 0,
+
+    zIndex: '1',
+  },
+});

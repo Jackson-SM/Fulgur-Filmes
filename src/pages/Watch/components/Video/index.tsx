@@ -1,4 +1,4 @@
-import { CalendarIcon, LapTimerIcon, PlayIcon, PlusIcon, StarIcon } from '@radix-ui/react-icons';
+import { CalendarIcon, LapTimerIcon, PlusIcon, StarIcon, VideoIcon } from '@radix-ui/react-icons';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -56,7 +56,7 @@ export function Video() {
         <DescriptionVideo>{video?.sinopse}</DescriptionVideo>
         <Box>
           <Button color="primary" size="default" css={{ padding: 15, fontSize: 15, gap: 20 }}>
-            <PlayIcon />
+            <VideoIcon />
             WATCH TRAILER
           </Button>
           <Button color="primary" size="default" css={{ padding: 15, fontSize: 15, gap: 20 }}>

@@ -16,3 +16,15 @@ export function CardMovie({ data, ...props }: ICardMovieProps) {
     </StyledCardMovie>
   );
 }
+
+interface ICardVideoPreview extends React.ComponentProps<typeof StyledCardMovie> {
+  resultFile?: string;
+}
+
+export function CardVideoPreview({ resultFile, ...props }: ICardVideoPreview) {
+  return (
+    <StyledCardMovie {...props}>
+      <StyledImgCard src={resultFile} />
+    </StyledCardMovie>
+  );
+}
