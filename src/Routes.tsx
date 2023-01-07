@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import { ScreenLoading } from './components/ScreenLoading';
 import { useAuth } from './hooks/useAuth';
@@ -25,16 +25,18 @@ export function PublicRoute({ children }: RouteProps) {
 export function PrivateRoute({ levelAccess, children }: RouteProps) {
   const { isLogged, isLoading, user } = useAuth();
 
+  console.log(user);
+
   if (isLoading) {
     return <ScreenLoading />;
   }
 
   if (isLogged) {
-    const levelAccessIsEqual = Number(user?.level) >= Number(levelAccess || 1);
-    return levelAccessIsEqual ? children : <Navigate to="/" />;
+    // const levelAccessIsEqual = Number(user?.level) >= Number(levelAccess || 1);
+    return children;
   }
 
-  return <Navigate to="/login" />;
+  return <Navigate to="/register" />;
 }
 
 function App() {
@@ -44,51 +46,41 @@ function App() {
 
   return (
     <Routes>
-      <Route
-        path="/"
-        element={
-          <PrivateRoute>
-            <Home />
-          </PrivateRoute>
-        }
-      />
-      <Route
-        path="/login"
-        element={
-          <PublicRoute>
-            <Login />
-          </PublicRoute>
-        }
-      />
-      <Route
-        path="/register"
-        element={
-          <PublicRoute>
-            <Register />
-          </PublicRoute>
-        }
-      />
-
-      <Route
-        path="/dashboard"
-        element={
-          <PrivateRoute levelAccess={2}>
-            <Dashboard />
-          </PrivateRoute>
-        }
-      >
-        <Route path="upload" element={<Upload />} />
-      </Route>
-
-      <Route path="watch">
+      <Route path="/">
         <Route
-          path=":videoId"
+          index
           element={
             <PrivateRoute>
-              <Watch />
+              <Home />
             </PrivateRoute>
           }
         />
+        <Route
+          path="login"
+          element={
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="register"
+          element={
+            <PublicRoute>
+              <Register />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="dashboard"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        >
+          <Route path="upload" element={<Upload />} />
+        </Route>
       </Route>
     </Routes>
   );

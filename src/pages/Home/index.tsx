@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-import { Api } from '../../api/api';
 import { Navbar } from '../../components/Navbar';
 import { Banner } from './components/Banner';
 import { FeaturedVideos } from './components/FeaturedVideos';
@@ -11,10 +10,6 @@ import { OptionsUser } from './components/OptionsUser';
 import { ContainerCards, HomeContainer } from './styles';
 
 export function Home() {
-  useEffect(() => {
-    console.log(Api.defaults.headers.Authorization);
-  }, []);
-
   return (
     <HomeContainer>
       <Navbar spacing="around">

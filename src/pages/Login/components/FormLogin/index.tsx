@@ -30,7 +30,11 @@ export function FormLogin() {
           Ou <strong>crie</strong> uma
         </TextColor>
       </div>
-      <Form onSubmit={handleSubmit((data) => login(data.email, data.password))}>
+      <Form
+        onSubmit={handleSubmit(async (data) => {
+          await login(data.email, data.password);
+        })}
+      >
         <Controller
           control={control}
           name="email"

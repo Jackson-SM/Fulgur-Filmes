@@ -25,7 +25,11 @@ export function FormRegister() {
       <div className="top_form">
         <img src={logo} alt="" />
       </div>
-      <Form onSubmit={handleSubmit((data) => register(data.email, data.name, data.password))}>
+      <Form
+        onSubmit={handleSubmit(async (data) => {
+          await register(data.email, data.name, data.password);
+        })}
+      >
         <Controller control={control} name="email" render={({ field }) => <Input {...field} ref={null} />} />
 
         <Controller control={control} name="name" render={({ field }) => <Input {...field} ref={null} />} />
